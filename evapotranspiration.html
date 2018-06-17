@@ -1,0 +1,93 @@
+<!-- Main "config" node design -->
+<script type="text/x-red" data-template-name="evapo-config">
+    <div class="form-row">
+        <label for="node-config-input-config"><i class="fa fa-key"></i> API Key</label>
+        <input type="text" id="node-config-input-key" placeholder="Weather Underground API Key">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-config"><i class="fa fa-tint"></i> PWS Name</label>
+        <input type="text" id="node-config-input-pws" placeholder="Personal Weather Station Name">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-config"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-config-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('evapo-config', {
+        category: 'config',
+        defaults: {
+            key: {
+                value: "",
+                required: true
+            },
+            pws: {
+                value: "",
+                required: true
+            },
+            name: {
+                value: "",
+                required: true
+            }
+        },
+        label: function() {
+            return this.name;
+        }
+    });
+</script>
+
+
+
+
+<!-- Main "evapo" node design -->
+<script type="text/x-red" data-template-name="evapo">
+    <div class="form-row">
+        <label for="node-input-config"><i class="fa fa-cloud"></i> Weather API</label>
+        <input type="text" id="node-input-config">
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-calendar"></i> Date</label>
+        <input type="text" id="node-input-date" placeholder="Date">
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="evapo">
+    <h3>Evapotranspiration.</h3>
+    <p>Requires configuration with a weather underground api key and reference to a valid Personal Weather Sation (PWS). PWS must provide solar radiation. See list: <a href="https://www.wunderground.com/weatherstation/ListStations.asp">https://www.wunderground.com/weatherstation/ListStations.asp</a></p>
+    <h3>Optional Inputs</h3>
+    <p>msg.date (defualt: today)<br>msg.key (string) <br>msg.pws (string)</p>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('evapo', {
+        category: 'weather',
+        color: "#36c0d8",
+        defaults: {
+            config: {
+                type: "evapo-config",
+                required: true
+            },
+            date: {
+                value: ""
+            },
+            name: {
+                value: ""
+            }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "plant.png",
+        label: function() {
+            //var dbNode = RED.nodes.node(this.mydb);
+            return this.name || "evapo";
+        },
+        labelStyle: function() {
+            return this.name ? "node_label_italic" : "";
+        }
+    });
+</script>

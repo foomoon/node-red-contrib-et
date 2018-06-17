@@ -1,0 +1,21 @@
+{
+    "name": "node-red-contrib-evapotranspiration",
+    "version": "1.0.1",
+    "description": "An evapotranspiration node for node-red",
+    "dependencies": {
+        "evapotranspiration_calculator": "^0.1.1",
+        "stats-lite": "^2.1.1",
+        "async": "^2.6.1",
+        "moment-timezone": "^0.5.17",
+        "request": "^2.87.0"
+    },
+    "keywords": [
+        "node-red",
+        "evapotranspiration"
+    ],
+    "node-red": {
+        "nodes": {
+            "evapo": "evapotranspiration.js"
+        }
+    }
+}
