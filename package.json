@@ -9,6 +9,7 @@
         "moment-timezone": "^0.5.17",
         "request": "^2.87.0"
     },
+    "devDependencies": {},
     "keywords": [
         "node-red",
         "evapotranspiration"
@@ -17,5 +18,14 @@
         "nodes": {
             "evapo": "evapotranspiration.js"
         }
-    }
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/foomoon/node-red-contrib-et"
+    },
+    "author": "Daniel Claxton",
+    "license": "MIT"
 }
